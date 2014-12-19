@@ -128,4 +128,22 @@ feature "User posts a new restaurant" do
     expect(Restaurant.count).to eq prev_count
   end
 
+  # scenario "posts an invalid entry -- provides an invalid zip" do
+  #   prev_count = Restaurant.count
+  #   restaurant = Restaurant.new(name: "Snooze", address: "3940 5th Avenue", city: "San Diego", state: "CA", zip: "92103", category: "Brunch", description: "Best brunch in the world")
+  #   visit new_restaurant_path
+  #   fill_in "Name", with: restaurant.name
+  #   fill_in "Address", with: restaurant.address
+  #   fill_in "Zip", with: "120"
+  #   fill_in "City", with: restaurant.city
+  #   fill_in "State", with: restaurant.state
+  #   fill_in "Category", with: restaurant.category
+  #   click_on 'Add Restaurant'
+  #
+  #   expect(page).to_not have_content "You have successfully added a new restaurant."
+  #   expect(page).to have_content "Zip can't be blank"
+  #   expect(page).to have_content "Your restaurant couldn't be saved."
+  #   expect(Restaurant.count).to eq prev_count
+  # end
+##NOTE: Add testing and validations for valid state and zip
 end

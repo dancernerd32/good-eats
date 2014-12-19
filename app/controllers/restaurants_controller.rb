@@ -6,6 +6,7 @@ class RestaurantsController < ApplicationController
   def new
     @restaurant = Restaurant.new
   end
+
   def create
     @restaurant = Restaurant.new(restaurant_params)
 
@@ -16,6 +17,10 @@ class RestaurantsController < ApplicationController
        flash.now[:notice] = "Your restaurant couldn't be saved."
        render :new
     end
+  end
+
+  def show
+    @restaurant = Restaurant.find(params[:id])
   end
 
   private

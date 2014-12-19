@@ -9,8 +9,9 @@ feature "User visits the restaurants page" do
   #
   # * I see a title that lets me know I'm on the right page
   # * I see all of the restaurants listed
+  # * Visiting the root path should display a list of all restaurants.
 
-  it "sees a restaurant" do
+  scenario "sees a restaurant" do
     restaurant1 = Restaurant.create(name: "Snooze", address: "3940 5th Avenue", city: "San Diego", state: "CA", zip: "92103", description: "Brunch")
     restaurant2 = Restaurant.create(name: "FABB", address: "3925 4th Ave", city: "San Diego", state: "CA", zip: "92103", description: "Asian Fusion")
 
@@ -20,5 +21,15 @@ feature "User visits the restaurants page" do
     expect(page).to have_content restaurant1.name
     expect(page).to have_content restaurant2.name
 
+  end
+
+  scenario "visits the homepage" do
+    restaurant1 = Restaurant.create(name: "Snooze", address: "3940 5th Avenue", city: "San Diego", state: "CA", zip: "92103", description: "Brunch")
+    restaurant2 = Restaurant.create(name: "FABB", address: "3925 4th Ave", city: "San Diego", state: "CA", zip: "92103", description: "Asian Fusion")
+
+    visit '/'
+    expect(page).to have_content "Restaurants"
+    expect(page).to have_content restaurant1.name
+    expect(page).to have_content restaurant2.name
   end
 end
