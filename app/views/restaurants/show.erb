@@ -7,3 +7,9 @@
   </h2>
 <%=@restaurant.category%>
 <%=@restaurant.description%>
+
+<%@restaurant.reviews.each do |review|%>
+  <%=review.rating%>
+  <%=review.body%>
+  <%=review.created_at%>
+<%end%>
